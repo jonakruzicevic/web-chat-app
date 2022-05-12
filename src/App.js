@@ -3,8 +3,6 @@ import Messages from "./components/Massages";
 import Input from "./components/Input";
 import { getRandomName, getMemberColor } from "./utils/index";
 
-import "dotenv/config";
-
 class App extends Component {
   state = {
     messages: [],
@@ -16,9 +14,12 @@ class App extends Component {
 
   constructor() {
     super();
-    this.drone = new window.Scaledrone(process.env.REACT_APP_SECRET_KEY, {
-      data: this.state.member,
-    });
+    this.drone = new window.Scaledrone(
+      process.env.REACT_APP_SCALEDRONE_API_KEY,
+      {
+        data: this.state.member,
+      }
+    );
     this.drone.on("open", (error) => {
       if (error) {
         return console.error(error);
