@@ -16,7 +16,7 @@ class App extends Component {
 
   constructor() {
     super();
-    this.drone = new window.Scaledrone(env.REACT_SECRET_KEY, {
+    this.drone = new window.Scaledrone(process.env.REACT_APP_SECRET_KEY, {
       data: this.state.member,
     });
     this.drone.on("open", (error) => {
