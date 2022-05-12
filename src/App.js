@@ -14,12 +14,9 @@ class App extends Component {
 
   constructor() {
     super();
-    this.drone = new window.Scaledrone(
-      process.env.REACT_APP_SCALEDRONE_API_KEY,
-      {
-        data: this.state.member,
-      }
-    );
+    this.drone = new window.Scaledrone(process.env.REACT_APP_VERCEL_ENV, {
+      data: this.state.member,
+    });
     this.drone.on("open", (error) => {
       if (error) {
         return console.error(error);
